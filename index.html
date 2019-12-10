@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html ng-app="wanderzapp">
+<head>
+    <title>Wanderz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
+          crossorigin="anonymous" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrit6y="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script>document.write("<link rel='stylesheet' href='style.css?v=" + Date.now() + "' />");</script>
+    6
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" integrity="sha256-ruP2+uorUblSeg7Tozk75u8TaSUKRCZVvNV0zRGxkRQ=" crossorigin="anonymous"></script>
+    <script>document.write("<script type='text/javascript' src='app.js?v=" + Date.now() + "'><\/script>");</script>
+</head>
+
+<body ng-controller="wctrl">
+    <div id="app" class="container-fluid" ng-class="{'bkgd1': props.page_index == 1 || props.page_index == 3 || props.page_index == 4 || props.page_index == 5 || props.page_index == 6 || props.page_index == 7 || props.page_index == 9 || props.page_index == 10, 'bkgd2': props.page_index == 2, 'bkgd3': props.page_index == 8 }">
+        <div ng-if="props.page_index == 1" id="page-1" class="animated fadeIn page">
+            <img id="logo" src="images/logo.png">
+            <div class="buttons" style="height: 115px;">
+                <button class="btn btn-lg btn-primary" ng-click="setPageIndex(2)">Log in with Facebook</button>
+                <button class="btn btn-lg btn-success" ng-click="setPageIndex(3)">Log in with Email</button>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 2" id="page-2" class="animated bounceInRight page">
+            <div id="fbhead" class="head">
+                <a href="#" ng-click="props.page_index = 1" class="btn btn-light pull-left" style="margin: 5px;"><i class="fa fa-arrow-left"></i></a>
+            </div>
+            <img class="mt-20" style="width: 25%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AAANFklEQVR42u3deYycZR3A8d/7vvPOtVe3LdCTnhTKIaXQUtpCaw2kRqhKrKBohJjSiBBjjAfGhD/4z2giJoIHQRMT4x9qIIpHACPUg9SAhiaVQ1qLwLa73XOOnZn38vm929aytAFmgH3fl++HDDvdozt5O995n/eY97Gu/dwX5XQsK5AocsT3yxe3vJ4dgV/cHEbuyjB0+syXbXOLBMC7xdLmbDuo2JZ/0Mk1/uq61V+7udpey/JDbfV0cqcOPDKBW9Js9m9vtvq/5PvFKyOxC9aJrukbmClhmJsdSm6JF5S2NpuzvuI4zb2Fwtg9hfzYL8zK2QRvv3HolhVKEBQX1urz7vW87h1iotfALQlZwkAiRMdW7/HHnOl1Y602f6OJfk9X+fCtuVzt2emx29MjN0P0KyYqS/dq5Dp0nwqcNTiQ4HV8vJmtI++JypInzUj8Om35lKHrFzyvZ1O1uuh3Zqy/QH8QQIo24Kfi7qvVF/zKxH79ybHbx7fJzep/SbW28OfmU33CMB1I8bA+ytXq839iRuVrj8ceh6473sw2+T1h6CwiciD9sZume+r1efeZ0Xle/2zrEL3V6tth6v/w9HE9gPQO4/2guL7RmL1LR+y2HntrNPvvYIcbkL3Ym63+28LQLdme33W52T6/krU5kL0hfBC457e87qttM2S/1oznCywUIJu0cdv3S5t1DA8gi8N3XasXLrPN+H0l2+dAdofvUZRbbEeRHjcHkNnUI6tLj6M7LAog02ybZQC8B0pnEQCEDoDQARA6AEIHQOgACB0AoQMgdIDQARA6AEIHQOgACB0AoQMgdACEDhA6AEIHQOgAEivHIkCaRVF85fKpj9Gx+QmmT1NgTbtrWf//lHX8y9ZJ9wkdmJGYgzCUINAZQqM4aNOqOLYtrutIXm85R3I5W3KOLbZtvfaFwPwvNB/DUD+GUx/DKP77gmP3w/DYffO9UTj1/SdeOKZeG0RfHixzR6+dPPXR0umI4/uWRejAWw7b8wNzC+PYSgVX5swqy/wzemThWX3m1hvfn9tflr6eonSX81I036PBa+gnR3diJa9hR8cDj068cOjvaHlB/PuaLV+aTV8m45sn9Um9taRan7pV6k2p1vR+M/5zzXxNv6dhvl9/1jUvNie/yBA6cIq4NRbfxFcuurJsUb+cv/Ised+58+S8ZXNl4bw+6e1Kzlyg+iKhLwgae6XalNGJSfn2j/8sB18eiYMndOAkU2vSQLpKebnk/AWy+dKlsuHixbJ88WwTTHL3FTtm5KAjCb2dNac7/tys3mI8WnATWBWhY0bocFe3iZcv7perN54j12xaGced7mEJ2+jAicC1h7Vm7b1z+0Vy1bqlUszzNCR0ZMLUDq9QLr1godxy/VrZeMmSxO+pJnTgTdLDVbW6Fw/Rd99wuVyzeWV8SAqEjgzQlButID7cdPNH18quj6+Ld1yB0JEhlXpLViyeLXfu3iqXXbiQBULoyNpQXU8i2X7lKrnz1i3xCS0gdGSIHkNu+YHc9skNcqsZqoPQkTG6R123y+/6/DbZsW01C4TQkTW+idyxLbn7C1fLB65YwQJJIN6Pjg6H62G8i53ICR0ZpTvedMj+9d1biZzQkVW6d333jevZJid0ZJW+H/tDW86VXTvZu07oyKRGy5dVS+fKV3dtYWEQOjK5XR5G8YUVvmYi7+0usEAIHVlUM9vlN123RtZesICFQejIIr0SzLnL5sot11/KwiB0ZHbYHkWy+4b10lVyWRiEjiyabHhyxZqzOV5O6MgqvUKrXgzxMx+5hIVB6MiqRtOTDRefLesuWsTCIHRklc5EsnP7hSwIQkdW6aQKq1ecKRvXLmFhEDqySt+08sGrVsVvQwWhI4N0ggWd82zr+uUsDEJHloftOk3SgjN7WBiEjqzSmUy3rFvGgiB0ZJW+eaW/rxTPrAJCR0bpFEqrlsxl2E7oyDKdp3zNat6hlhVcBRanpHOTrzlvfjY3SyLdNAnjU3vfDnpCkR5+jJg2GWmih9Vm9ZZkxdnpna9coxsYmpAXDg3Liy+NyCtHJuToWE2qtVZ8hRy9RPXbSeeNHByuSiGhU0ATOl4/bPcDWXhmr5wxuyt1j31gqCJ/2POCPPHUQTlgAq/UmvELl4Zo27boeT/WOzSbq46CrITOFEvoOMX2eSRLF/Wn6jGPjk/KA798Sn7zp2dlZLwuedeJL3lVKvLeeULHaYa9kSxflJ5h+959L8vd9/5RDr06Jl2lvPR0cS07Qscb0h1Li+f3peKxPvbki/KN7zwSb270EvhpcXgN09bmEu9Qmjc3+cfPn3n+sNz13UfjPehJ3QlG6EgkvS5cueTKnFmlRD9OvVDlN3/0RHyJK90WB6HjrYQeRtJdLkh3wofBDz62X/aZNTo72wgdbQ3do3hnVqmQ3ID0rL2HHt0f71kHoaPtNXperARfZ+Kf/xqIT4TJs11O6Gh/jd5lQk+yvc+8LJ4fCNe8IXS0HbqYYXuy15T7/30kvvw0CB3thm7+S/KhKt3L/srghOQIndDRUemJjmh0YlLGJhpcrJLQ0fGTIsERaeT67jPLInRCR2ZV6634dFc6J3Rk2GTTi8/eA6EjwzwvEDondGQckRM6AEIHCB0AoQMgdACEDoDQARA6AEIHQOgACB0gdACEDoDQARA6AEIHQOgACB0AoQOEDoDQARA6gORhgumE0ckJ6pPejP1+nQml2fITu3z8IJRKrRXP456YtaVtSbnoEjrenMA8eWf1FOWma9fE0wJHM3AR85YXyJrV8xO7jFYumSN3fGqDuDknEY9H/51Gxury8OPPxS8+SZ0qitCTFLpZW/WZ0HffuJ5pgU/jHBP6OZ/emKjH9Mxzh+XBR/cnes52nk1Ah3S+dh0JJXniR0IHOnR4sJL4iR8JHejQwFAl8dM4EzrQ6Rr9aFVs2yZ0IKv0SMnR0Zo4tkXoQFZVqk0ZnZgkdCDLRkzkepKRRehAdg2NVKXR9MS2CB3IrMND1fi03KQjdKADemgt4YfQCR3oPPQJsZJ+EJ3Qgc4cGa4mfo87oQMd0PPbh0fr4jiEDmTWeKUhY+aW9LPiCB3owMh4XWqTrcQfWiN0oAODwzVptgJJQeeEDrTr8NFKfLGQNCB0oE2vDlZS81gJHWh3jT5UiS8MSehAlrfRR9JxDJ3QgTbVG54Mj02m4tAaoQNtGptoyES1wRodyLLhsVo80UYaznMndKBNeo57y0/HMXRCB9o0MFRN1LRQhA68A/TQmpWix0voQJuhp+UYOqEDbdArygyO1FJzaI3QgTZUak0ZHU/H+9AJHWiTXsdd52i3LUIHMktnZplseom/ljuhAx3QudY8PYaeosdM6MBbNDCYjks8EzrQSegpmCaZ0IEO6emvaTq0pnL8syWMGRIGQSSOeR7N1CmWupMpqfuZdMg8U8tFT5DRSzwfHaml5l1rJ/5NN33i+zXzsUxhyXgSu64t887ombEdPfo+6x3vXy2f/dhliVxGf3n6kHzrgT1SLLz76ygdruuLsA7ddV70FKXeZI2epFdd88zxvFAOvDQyY49BpwAeGqkldhnp43vhP8NSLrkz9hhc15GUbaIzdE9i7HnzRJopBfO7HSe52596kko+78zoMkojdsYBhA6A0AEQOgBCB0DoAAgdAKEDIHSA0AEQOgBCB0DoAAgdAKEDIHQAhA4QOgBCB0DoAAgdAKEDIHQAhA6A0AFCZxEAhA6A0AEQOgBCB0DoAAgdAKEDIHSA0AEQOgBCB0DoAAgdAKEDIHQAhA4QOgBCB0DoAAgdAKEDIHQAhA6A0AFCB0DoAAgdAKEDIHQAhA6A0AEQOgBCBwgdAKEDIHQAhA6A0AEQOgBCB0DoAKEDIHQAhA6A0AEQOgBCB0DoAAgdIHQAhA6A0AEQOgBCB/BuhR6yGIBMi2zLiiosByDTnddt2/YOiFgsCyCTLLHt4BXbcRp/iyJCBzK5LjdtO07zH3berT5shu8+iwTIJjdX+62dc6uPm+L3MnwHsjhs9w+4+crvbdvyo0J+7L4o4kgbkK1huy2F/Pj9jt0at+M/FMZ+lstNPk7sQHbW5o7TerZYHP6ebqfb+gnLCsJy+fAdZlt9jCE8kP7ITdx+uXTkdtv2JuIh/PFVvNlg39dVHrjZfNIjdiDNkdtSLg/ens+PP3Z8lG6/ZjxfGH2oXB7Yaf5YjTg7FkgZe2pNXj6yu1Qc+sHJm+L29I33YmHkoZ7uQxtzTvPvUeQIa3cgDWtxR8ww/fme7v9uM5H/cPr+ttettuNhvFvb19tzcJN5Zdhlfni/fm7qBy3Cx0w/p3Gsw0imurQs/2CpNPRl0+zafH5iz6l2qudO9ddMfWPomVeG+81w/qe+17Wl1eq5LggL68Mwt9h8vevYi0TEQs/ecygMQ30m2S0vSNRDy7uO+H6oz7n39BuxLCuo62mtjt182nWrD5vbI2aFXNO966c7cvY/stm1OAdmGcAAAAAASUVORK5CYII=">
+            <h3>Log in with Facebook</h3>
+            <div ng-class="{'mt-10': props.errors.length === 0, 'mt-5': props.errors.length > 0}">
+                <form>
+                    <p ng-if="props.errors.length">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                            <li ng-repeat="error in props.errors">{{ error }}</li>
+                        </ul>
+                    </p>
+                    <input type="text" ng-model="props.email" class="form-control" style="margin-bottom: 1vh;" placeholder="Email" />
+                    <input type="password" ng-model="props.password" class="form-control" placeholder="password" />
+                    <div><a href="#">Forgot account?</a> | <a href="#">Sign up for facebook</a></div>
+                </form>
+            </div>
+            <div class="buttons">
+                <button class="btn btn-lg btn-primary" ng-click="checkForm(4)">Log in</button>
+            </div>
+        </div>
+        <div ng-if="props.page_index == 3" id="page-3" class="animated bounceInRight page">
+            <h3>Log in with Email</h3>
+            <div ng-class="{'mt-35': props.errors.length === 0, 'mt-25': props.errors.length > 0}">
+                <form>
+                    <p ng-if="props.errors.length">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                            <li ng-repeat="error in props.errors">{{ error }}</li>
+                        </ul>
+                    </p>
+                    <input type="email" ng-model="props.email" class="form-control" style="margin-bottom: 1vh;" placeholder="Email">
+                    <input type="password" ng-model="props.password" class="form-control" placeholder="password">
+                    <div><a href="#">Forgot account?</a> | <a href="#">Sign up</a></div>
+                </form>
+            </div>
+            <div class="buttons">
+                <button class="btn btn-lg btn-primary" ng-click="checkForm(4)">Log in</button>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 4" id="page-6" class="animated bounceInRight page">
+            <h3>Customize</h3>
+            <div id="customize" class="container">
+                <h5 ng-class="{'chosen': cust.social.id > 0}">Social</h5>
+                <ul>
+                    <li ng-repeat="item in socials" ng-click="cust.social = item">
+                        <img src="images/icons/socials/{{item.id}}.png" /> {{item.disp}}
+                        <i ng-show="cust.social == item" class="fa fa-check green"></i>
+                    </li>
+                </ul>
+
+                <h5 ng-class="{'chosen': cust.booking.id > 0}">Booking</h5>
+                <ul>
+                    <li ng-repeat="item in bookings" ng-click="cust.booking = item">
+                        <img src="images/icons/bookings/{{item.id}}.png" /> {{item.disp}}
+                        <i ng-show="cust.booking == item" class="fa fa-check green"></i>
+                    </li>
+                </ul>
+
+                <h5 ng-class="{'chosen': cust.travel.id > 0}">Get Around</h5>
+                <ul>
+                    <li ng-repeat="item in travels" ng-click="cust.travel = item">
+                        <img src="images/icons/travels/{{item.id}}.png" /> {{item.disp}}
+                        <i ng-show="cust.travel == item" class="fa fa-check green"></i>
+                    </li>
+                </ul>
+
+                <h5 ng-class="{'chosen': cust.eat.id > 0}">Eats</h5>
+                <ul>
+                    <li ng-repeat="item in eats" ng-click="cust.eat = item">
+                        <img src="images/icons/eats/{{item.id}}.png" /> {{item.disp}}
+                        <i ng-show="cust.eat == item" class="fa fa-check green"></i>
+                    </li>
+                </ul>
+
+                <div class="buttons">
+                    <button class="btn btn-lg btn-primary" ng-click="setPageIndex(5)" ng-show="getLastIndex() < 4">Plan Adventure</button>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 5" id="page-4" class="animated bounceInRight  page">
+            <h3>Where do you want to go?</h3>
+            <div id="accontainer">
+                <input type="text" ng-change="onChange()" ng-model="ac.search" ng-keydown="onKey($event.keyCode)" class="form-control" />
+                <ul id="autocomplete-results" ng-show="ac.isOpen" class="autocomplete-results">
+                    <li class="loading" ng-if="ac.isLoading">
+                        Loading results...
+                    </li>
+                    <li ng-repeat="result in ac.results" ng-click="setResult(result)" class="autocomplete-result"
+                        ng-class="{ 'is-active': $index === ac.arrowCounter }">
+                        {{ result }}
+                    </li>
+                </ul>
+            </div>
+            <img id="world" src="images/world.png" alt="world" style="width: 100%;" />
+            <div class="buttons">
+                <button class="btn btn-lg btn-primary" ng-show="ac.search.length > 0" ng-click="setPageIndex(6)">Let's Go</button>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 6" id="bepage" class="animated bounceInRight page">
+            <h3>Who do you want to be?</h3>
+            <div class="description">Persona: <label>{{cust.whobe.desc}}</label></div>
+
+            <div class="divtable">
+                <div ng-repeat="whobe in whobes" ng-click="setWhoBe(whobe.id)">
+                    <img src="{{'images/be/' + whobe.id + '.png'}}" ng-class="{'active': cust.whobe.id == whobe.id}" />
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-lg btn-primary" ng-click="setPageIndex(7)" ng-show="cust.whobe.id > 0">Plan it</button>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 7" id="dopage" class="animated bounceInRight page">
+            <h3>What do you want to do?</h3>
+            <div class="description">Agenda: <label>{{cust.whatdo.desc}}</label></div>
+
+            <div class="divtable">
+                <div ng-repeat="whatdo in whatdos" ng-click="setWhatDo(whatdo.id)">
+                    <img src="{{'images/do/' + whatdo.id + '.png'}}" ng-class="{'active': cust.whatdo.id == whatdo.id}" />
+                </div>
+            </div>
+
+            <div class="buttons" style="height: 115px;">
+                <button class="btn btn-lg btn-primary" ng-click="setPageIndex(8)">Trust Us (Skip)</button>
+                <button class="btn btn-lg btn-primary" ng-click="ding(5000); setPageIndex(8)" ng-show="cust.whatdo.id > 0">Plan it</button>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 8" id="page-5" class="animated bounceInRight page">
+            <h3>Peru</h3>
+            <ul id="location_events_list">
+                <li ng-repeat="event in loc.events" ng-click="setEvent(event)" ng-class="{'done': event.done == true}">
+                    {{ event.title }}
+                </li>
+            </ul>
+        </div>
+
+        <div ng-if="props.page_index == 8" id="bottomshare" class="share animated bounceInRight shadow" ng-click="state.showdisp.misc = 4">
+            <i class="fa fa-2x fa-share-alt"></i>
+        </div>
+
+        <div ng-if="props.page_index == 8" id="rn_container" class="animated bounceInRight" ng-class="{'open': state.navopen == true}">
+            <div id="rn_btn" ng-click="state.navopen = !state.navopen">
+                <i class="fa fa-arrow-left"></i>
+            </div>
+
+            <div id="rn_bar">
+                <img ng-show="cust.social.id == 1" ng-click="state.showdisp.social = 1" src="images/icons/socials/1.png" />
+                <img ng-show="cust.social.id == 2" ng-click="state.showdisp.social = 2" src="images/icons/socials/2.png" />
+                <img ng-show="cust.social.id == 3" ng-click="state.showdisp.social = 3" src="images/icons/socials/3.png" />
+
+                <img ng-show="cust.booking.id == 1" ng-click="state.showdisp.booking = 1" src="images/icons/bookings/1.png" />
+                <img ng-show="cust.booking.id == 2" ng-click="state.showdisp.booking = 2" src="images/icons/bookings/2.png" />
+                <img ng-show="cust.booking.id == 3" ng-click="state.showdisp.booking = 3" src="images/icons/bookings/3.png" />
+
+                <img src="images/po/translate.png" ng-click="state.showdisp.misc = 1" />
+
+                <img ng-show="cust.travel.id == 1" ng-click="state.showdisp.travel = 1" src="images/icons/travels/1.png" />
+                <img ng-show="cust.travel.id == 2" ng-click="state.showdisp.travel = 2" src="images/icons/travels/2.png" />
+                <img ng-show="cust.travel.id == 3" ng-click="state.showdisp.travel = 3" src="images/icons/travels/3.png" />
+
+                <img ng-show="cust.eat.id == 1" ng-click="state.showdisp.eats = 1" src="images/icons/eats/1.png" />
+                <img ng-show="cust.eat.id == 2" ng-click="state.showdisp.eats = 2" src="images/icons/eats/2.png" />
+                <img ng-show="cust.eat.id == 3" ng-click="state.showdisp.eats = 3" src="images/icons/eats/3.png" />
+
+                <img src="images/po/messages.png" ng-click="state.showdisp.misc = 2" />
+
+                <img src="images/po/nextadventures.png" ng-click="setPageIndex(9)" />
+            </div>
+        </div>
+
+        <div id="rn_display" ng-if="props.page_index == 8 && (state.showdisp.social > 0 || state.showdisp.booking > 0 || state.showdisp.travel > 0 || state.showdisp.eats > 0 || state.showdisp.misc > 0)">
+            <img ng-show="state.showdisp.social == 1" ng-click="state.showdisp.social = 0" src="images/disp/facebook.png" />
+            <img ng-show="state.showdisp.social == 2" ng-click="state.showdisp.social = 0" src="images/disp/snapchat.png" />
+            <img ng-show="state.showdisp.social == 3" ng-click="state.showdisp.social = 0" src="images/disp/twitter.png" />
+
+            <img ng-show="state.showdisp.booking == 1" ng-click="clickLoc($event); state.showdisp.booking = 0" src="images/disp/kayak.png" />
+            <img ng-show="state.showdisp.booking == 2" ng-click="state.showdisp.booking = 0" src="images/disp/hotwire.png" />
+            <img ng-show="state.showdisp.booking == 3" ng-click="state.showdisp.booking = 0" src="images/disp/travelocity.png" />
+
+            <img ng-show="state.showdisp.travel == 1" ng-click="state.showdisp.travel = 0" src="images/disp/lyft.png" />
+            <img ng-show="state.showdisp.travel == 2" ng-click="state.showdisp.travel = 0" src="images/disp/uber.png" />
+            <img ng-show="state.showdisp.travel == 3" ng-click="state.showdisp.travel = 0" src="images/disp/gmaps.png" />
+
+            <img ng-show="state.showdisp.eats == 1" ng-click="clickLoc($event); state.showdisp.eats = 0" src="images/disp/yelp.png" />
+            <img ng-show="state.showdisp.eats == 2" ng-click="state.showdisp.eats = 0" src="images/disp/grubhub.png" />
+            <img ng-show="state.showdisp.eats == 3" ng-click="state.showdisp.eats = 0" src="images/disp/restaurants.png" />
+
+            <img ng-show="state.showdisp.misc == 1" ng-click="state.showdisp.misc = 0" src="images/disp/translate.png" />
+            <img ng-show="state.showdisp.misc == 2" ng-click="state.showdisp.misc = 0" src="images/disp/messages.png" />
+            <img ng-show="state.showdisp.misc == 3" ng-click="state.showdisp.misc = 0" src="images/disp/directions.png" />
+
+            <img ng-show="state.showdisp.misc == 4" ng-click="state.showdisp.misc = 0; ding(5000)" src="images/disp/fbshare.png" />
+        </div>
+
+        <div id="leveldudes" class="animated bounceInRight" ng-if="props.page_index == 8">
+            <h6 style="margin: 0;">Current Level</h6>
+            <img ng-show="points >= 0 && points < 20000" src="images/level/1.png" />
+            <img ng-show="points >= 20000 && points < 30000" src="images/level/2.png" />
+            <img ng-show="points >= 30000 && points < 40000" src="images/level/3.png" />
+            <img ng-show="points >= 40000" src="images/level/4.png" />
+        </div>
+
+        <div ng-if="props.page_index == 8" class="svgcontainer animated bounceInRight">
+            <svg width="100" height="100" class="chart" ng-click="setPageIndex(10)">
+                <circle r="25" cx="50" cy="50" class="pie" style="stroke-dasharray: {{setPieChart()}};"></circle>
+                <text x="50" y="-55" text-anchor="middle" alignment-baseline="middle" style="font-size: 10pt;">
+                    {{ points }}
+                </text>
+                <text x="50" : y="-40" text-anchor="middle" alignment-baseline="middle" style="font-size: 8pt; font-style: italic;">
+                    {{ labelSmall }}
+                </text>
+            </svg>
+        </div>
+
+        <div ng-if="props.page_index == 9" id="page-9" class="animated bounceInRight page">
+            <h3>Saved Adventures</h3>
+            <div id="accontainer">
+                <input type="text" ng-change="onChange()" ng-model="ac.search" ng-keydown="onKey($event.keyCode)" class="form-control" />
+                <ul id="autocomplete-results" ng-show="ac.isOpen" class="autocomplete-results">
+                    <li class="loading" ng-if="ac.isLoading">
+                        Loading results...
+                    </li>
+                    <li ng-repeat="result in ac.results" ng-click="setResult(result)" class="autocomplete-result"
+                        ng-class="{ 'is-active': $index === ac.arrowCounter }">
+                        {{ result }}
+                    </li>
+                </ul>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27245308.15432923!2d-98.71511920413984!3d34.41623992221459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1540004743181" width="100%" height="480" frameborder="0" style="border:0; top: 150px; position: fixed; left: 0;" allowfullscreen></iframe>
+            <div class="buttons">
+                <button class="btn btn-lg btn-primary" ng-click="setPageIndex(8)">Load Adventure</button>
+            </div>
+        </div>
+
+        <div ng-if="props.page_index == 10" id="levelpage" class="animated bounceInRight page">
+            <h3>Levels</h3>
+            <table>
+                <tr>
+                    <td>10,000 points <img src="images/level/1.png" /></td>
+                    <td>20,000 points <img src="images/level/2.png" /></td>
+                </tr>
+                <tr>
+                    <td>30,000 points <img src="images/level/3.png" /></td>
+                    <td>40,000 points <img src="images/level/4.png" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="head" ng-if="props.page_index > 2" class="darkish head">
+            <a href="#" ng-click="goBackIndex()" class="btn btn-light pull-left" style="margin: 5px;"><i class="fa fa-arrow-left"></i></a>
+            <div id="user">User: <strong>{{props.email}}</strong><i class="fa fa-cog ml-10" ng-click="setPageIndex(4)"></i></div>
+        </div>
+
+        <div ng-if="state.showding == true" class="dingercontainer animated bounceInDown">
+            <div id="dinger">
+                You've earned <br /> <span>{{props.adderpoints}}</span> <br /> points!
+            </div>
+        </div>
+
+        <div ng-if="state.congrats == true" class="gratscontainer animated bounceInDown">
+            <div id="dinger">
+                You've earned <br /> <span>{{props.adderpoints}}</span> <br /> points!
+            </div>
+        </div>
+
+        <div ng-if="state.showdesc" class="desccontainer animated bounceInDown">
+            <div id="descriptions">
+                <div>
+                    <i class="fa fa-times pull-right" id="close"  ng-click="state.showdesc = false"></i>
+                </div>
+                <label>{{cust.event.title}}</label>
+                <p>{{cust.event.desc}}</p>
+                <p>{{cust.event.desc2}}</p>
+                <div id="buttoncontainer">
+                    <div class="pull-left" style="width: 25%;" ng-click="state.showdisp.misc = 3"><img src="images/icons/desc/1.png" /></div>
+                    <div class="pull-left" style="width: 25%;" ng-click="state.showdisp.misc = 4"><img src="images/icons/desc/2.png" /></div>
+                    <div class="pull-left" style="width: 25%;" ng-click="state.showdisp.eats = 1"><img src="images/icons/desc/3.png" /></div>
+                    <div class="pull-left" style="width: 25%;" ng-click="state.showdesc = false; checkEvent(cust.event)"><img src="images/icons/desc/4.png" /></div>
+                    <div style="visibility: hidden;"><i class="fa fa-2x fa-cog"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>6
